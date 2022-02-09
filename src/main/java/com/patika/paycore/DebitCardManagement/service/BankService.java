@@ -12,7 +12,7 @@ public interface BankService {
 
     boolean addBank(Bank bank);
 
-    BankDTO updateBank(Bank bank);
+    BankDTO updateBank(Integer id, Bank bank);
 
 
     boolean deleteBank(Integer id);

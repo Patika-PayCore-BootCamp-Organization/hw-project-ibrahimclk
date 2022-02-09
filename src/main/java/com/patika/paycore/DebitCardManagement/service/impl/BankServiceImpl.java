@@ -47,8 +47,11 @@ public class BankServiceImpl implements BankService {
     }
 
     @Override
-    public BankDTO updateBank(Bank bank) {
-
+    public BankDTO updateBank(Integer id, Bank bank) {
+        BankDTO currentBank = getBank(id);
+        if(currentBank == null)
+            return null;
+        bank.setId(id);
         return BankMapper.toDto(bankRepository.save(bank));
     }
 
