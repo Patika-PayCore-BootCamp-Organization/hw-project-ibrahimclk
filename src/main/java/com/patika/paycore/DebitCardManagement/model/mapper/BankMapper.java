@@ -14,7 +14,7 @@ public class BankMapper {
 
     public static Bank toEntity(BankDTO bankDTO){
         Bank bank = new Bank();
-        bank.setName(bank.getName());
+        bank.setName(bankDTO.getName());
         bank.setAddress(bankDTO.formatBank());
         return bank;
     }
