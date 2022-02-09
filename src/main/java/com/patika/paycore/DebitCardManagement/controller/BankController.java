@@ -8,6 +8,7 @@ import com.patika.paycore.DebitCardManagement.service.BankService;
 import com.patika.paycore.DebitCardManagement.service.impl.BankServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -15,6 +16,7 @@ import javax.validation.constraints.Min;
 import java.util.ArrayList;
 import java.util.List;
 
+@Validated
 @RestController
 @RequestMapping("/api/bank")
 public class BankController {
@@ -34,21 +36,21 @@ public class BankController {
         return bankService.getAllBanks();
     }
 
-    @PostMapping(path = "/get")
-    public BankDTO getBank(@RequestParam Integer id){
+    @GetMapping(path = "/get")
+    public BankDTO getBank(@RequestParam @Min(1) Integer id){
 
         return bankService.getBank(id);
     }
 
     @PostMapping(path = "/add")
-    public boolean addBank(@RequestBody BankDTO bank){
+    public boolean addBank(@RequestBody @Valid BankDTO bank){
         return bankService.addBank(BankMapper.toEntity(bank));
     }
 
-    @PutMapping(value = "/update")
-    public BankDTO updateBank(@RequestBody BankDTO bank){
+    @PutMapping(value = "/update/{id}")
+    public BankDTO updateBank(@PathVariable Integer id, @RequestBody BankDTO bank){
 
-        return bankService.updateBank(BankMapper.toEntity(bank));
+        return bankService.updateBank(id, BankMapper.toEntity(bank));
     }
 
     @DeleteMapping(value = "/delete/id={id}")
