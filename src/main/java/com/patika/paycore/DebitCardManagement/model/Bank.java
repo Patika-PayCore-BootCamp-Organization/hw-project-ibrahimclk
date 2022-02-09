@@ -10,9 +10,9 @@ import javax.validation.constraints.NotBlank;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Data
 @Entity
 @Table(name = "bank")
 public class Bank {
