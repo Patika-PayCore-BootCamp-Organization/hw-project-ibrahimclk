@@ -39,4 +39,7 @@ public class Customer implements Serializable {
 
     @Email
     private String email;
+
+//    @OneToOne(mappedBy = "customer", cascade = CascadeType.ALL)
+//    private Card card;
 }

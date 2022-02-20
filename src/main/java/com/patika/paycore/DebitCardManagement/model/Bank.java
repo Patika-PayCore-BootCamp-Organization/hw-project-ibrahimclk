@@ -40,4 +40,6 @@ public class Bank {
         });
         return response;
     }
+//    @OneToOne(mappedBy = "bank", cascade = CascadeType.ALL)
+//    private Card card;
 }
