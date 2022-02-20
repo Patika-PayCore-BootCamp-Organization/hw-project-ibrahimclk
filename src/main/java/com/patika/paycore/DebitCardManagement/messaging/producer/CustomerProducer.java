@@ -27,7 +27,7 @@ public class CustomerProducer {
     }
 
     @PostMapping("customer/{id}")
-    public String publishCustomer(@PathVariable Integer id) {
+    public String publishCustomer(@PathVariable Integer id){
         Customer customer = customerService.getCustomer(id);
         template.convertAndSend(RabbitMQConfig.EXCHANGE, RabbitMQConfig.ROUTING_KEY, customer);
         return "Success";
